@@ -1,9 +1,9 @@
-import { Authors, Books, CreateBook } from "./components";
+import { Authors, Books, CreateBook, Navbar } from "./components";
 
 export default function App() {
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>📚 GraphQL Books Frontend</h1>
+    <div className="h-screen">
+      <Navbar />
       <Authors />
       <Books />
       <CreateBook />
