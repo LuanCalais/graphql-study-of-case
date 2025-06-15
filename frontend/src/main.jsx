@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App.jsx";
 import { ApolloProvider } from "@apollo/client";
 import client from "./apolloClient.js";
+import { ChakraProvider } from "@chakra-ui/react";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
     </ApolloProvider>
   </StrictMode>
 );
