@@ -1,44 +1,40 @@
-import {
-  Container,
-  Flex,
-  Text,
-  HStack,
-  Button,
-  
-} from "@chakra-ui/react";
-import { IoAddCircle } from 'react-icons/io5'
-// import { Link } from "react-router-dom";
-import { IoMoon } from "react-icons/io5";
-import { LuSun } from "react-icons/lu";
+import React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-//   const { colorMode, toggleColorMode } = useColorMode();
-
   return (
-    <Container maxW={"1140px"} px={4}>
-      <Flex
-        h={16}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-        flexDirection={{ base: "column", sm: "row" }}
-      >
-        <Text
-          fontSize={{ base: "22", sm: "28" }}
-          fontWeight={"bold"}
-          textTransform={"uppercase"}
-          textAlign={"center"}
-          bgGradient={"linear(to-r, cyan.400, blue.500)"}
-          bgClip={"text"}
-        >
-        </Text>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Button color="inherit" component={Link} to="/">
+              <img
+                src="./bookql-logo-light.png"
+                alt="Logo"
+                style={{ width: "80px" }}
+              />
+            </Button>
+          </Typography>
 
-        <HStack spacing={2} alignItems={"center"}>
-   
-          {/* <Button onClick={toggleColorMode}>
-            {colorMode === "light" ? <IoMoon /> : <LuSun />}
-          </Button> */}
-        </HStack>
-      </Flex>
-    </Container>
+          <Button color="inherit" component={Link} to="/create">
+            Criar Livro
+          </Button>
+
+          <Button color="inherit" component={Link} to="/authors">
+            Autores
+          </Button>
+
+          <Button color="inherit" component={Link} to="/books">
+            Livros
+          </Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }

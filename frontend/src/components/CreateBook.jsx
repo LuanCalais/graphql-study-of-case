@@ -1,6 +1,7 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { TextField, Button, MenuItem, Paper, Typography } from "@mui/material";
 import { useState } from "react";
+import ContentLayout from "../layouts/contentLayout";
 
 const CREATE_BOOK = gql`
   mutation CreateBook($title: String!, $authorId: Int!) {
@@ -37,34 +38,36 @@ export default function CreateBook() {
   };
 
   return (
-    <Paper className="p-4 my-4">
-      <Typography variant="h5" gutterBottom>
-        Add Book
-      </Typography>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <TextField
-          label="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <TextField
-          select
-          label="Author"
-          value={authorId}
-          onChange={(e) => setAuthorId(e.target.value)}
-          required
-        >
-          {data?.authors.map((a) => (
-            <MenuItem key={a.id} value={a.id}>
-              {a.name}
-            </MenuItem>
-          ))}
-        </TextField>
-        <Button variant="contained" type="submit">
-          Create
-        </Button>
-      </form>
-    </Paper>
+    <ContentLayout>
+      <Paper className="p-4 my-4">
+        <Typography variant="h5" gutterBottom>
+          Add Book
+        </Typography>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+          <TextField
+            label="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <TextField
+            select
+            label="Author"
+            value={authorId}
+            onChange={(e) => setAuthorId(e.target.value)}
+            required
+          >
+            {data?.authors.map((a) => (
+              <MenuItem key={a.id} value={a.id}>
+                {a.name}
+              </MenuItem>
+            ))}
+          </TextField>
+          <Button variant="contained" type="submit">
+            Create
+          </Button>
+        </form>
+      </Paper>
+    </ContentLayout>
   );
 }

@@ -1,12 +1,15 @@
-import { Authors, Books, CreateBook, Navbar } from "./components";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Navbar } from "./components";
+import AppRoutes from "./routes";
+import "./App.css";
 
 export default function App() {
   return (
-    <div className="h-screen">
+    <Router>
       <Navbar />
-      <Authors />
-      <Books />
-      <CreateBook />
-    </div>
+      <div className="main-container">
+        <AppRoutes />
+      </div>
+    </Router>
   );
 }
